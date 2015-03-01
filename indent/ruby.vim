@@ -546,11 +546,7 @@ function GetRubyIndent(...)
 
     if opening.pos != -1
       if opening.type == '(' && searchpair('(', '', ')', 'bW', s:skip_expr) > 0
-        if col('.') + 1 == col('$')
-          return ind + sw
-        else
-          return virtcol('.')
-        endif
+        return ind + sw
       else
         let nonspace = matchend(line, '\S', opening.pos + 1) - 1
         return nonspace > 0 ? nonspace : ind + sw
